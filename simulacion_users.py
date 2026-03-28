@@ -8,6 +8,7 @@ def simular_users(numero_users):
     role_list = [U1,U2]
     email_domains = ["example.com", "test.com", "sample.com"]
     password_list = ["password123", "admin2024", "user2024"]
+    fechaInicial = datetime(2026, 1, 1)
     users = []
 
     for i in range(numero_users):
