@@ -5,7 +5,7 @@ import random
 def simular_users(numero_users):
 
     users_list = ["admin","student"]
-    role_list = [U1,U2]
+    role_list = ["U1","U2"]
     email_domains = ["example.com", "test.com", "sample.com"]
     password_list = ["password123", "admin2024", "user2024"]
     fechaInicial = datetime(2026, 1, 1)
@@ -21,6 +21,22 @@ def simular_users(numero_users):
             "password": random.choice(password_list),
             "fechaCreacion": fechaSimulada.strftime("%Y-%m-%d")
         }
+
+        #Inyectando errores controlados
+        probabilidadError=random.random()
+        if probabilidadError <0.1:
+            user["id"]=None
+        elif probabilidadError <0.2:
+            user["email"]=random.choice(["invalid_email", "user@invalid", "user@.com"])
+            user["password"]=random.choice(["short", "123", "password"])
+        elif probabilidadError <0.3:
+            user["fechaCreacion"]=None
+        elif probabilidadError <0.4:
+            user["role"]=random.choice(["invalid_role", "guest", ""])
+        elif probabilidadError <0.5:
+            user["name"]=random.choice(["", "Perez", "tatico"])
+        
+
         users.append(user)
     return users
 
